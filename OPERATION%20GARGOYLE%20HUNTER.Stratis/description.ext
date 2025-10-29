@@ -1,0 +1,25 @@
+class CfgSounds {
+	sounds[] = {};  	
+	
+	class invisible {
+		name="invisible";
+		sound[]={"sounds\invisible.ogg", 1,1,100};
+		titles[] = {};
+	};	
+	class invisible {
+		name="waiting";
+		sound[]={"sounds\waiting.ogg", 1,1,100};
+		titles[] = {};
+	};	
+	class cheeks {
+		name="cheeks";
+		sound[]={"sounds\cheeks.ogg", 1,1,100};
+		titles[] = {};
+	};	
+	class dna {
+		name="dna";
+		sound[]={"sounds\dna.ogg", 1,1,100};
+		titles[] = {};
+	};	
+
+};
