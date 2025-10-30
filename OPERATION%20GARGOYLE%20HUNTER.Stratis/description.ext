@@ -6,7 +6,7 @@ class CfgSounds {
 		sound[]={"sounds\invisible.ogg", 1,1,100};
 		titles[] = {};
 	};	
-	class invisible {
+	class waiting {
 		name="waiting";
 		sound[]={"sounds\waiting.ogg", 1,1,100};
 		titles[] = {};
@@ -19,6 +19,11 @@ class CfgSounds {
 	class dna {
 		name="dna";
 		sound[]={"sounds\dna.ogg", 1,1,100};
+		titles[] = {};
+	};
+	class metalGear {
+		name="metalGear";
+		sound[]={"sounds\metalGear.ogg", 1,1,100};
 		titles[] = {};
 	};	
 
