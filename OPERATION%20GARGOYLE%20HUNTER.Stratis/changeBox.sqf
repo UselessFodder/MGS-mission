@@ -1,6 +1,6 @@
 // Alternates between snake and box disappearing to give appearance of hiding
 
-_meme_chance = 100;
+_meme_chance = 10;
 
 if (floor(random 100) < _meme_chance) then {
 	[floor(random 4) + 1] spawn compile preProcessFile "goatspawn.sqf";
