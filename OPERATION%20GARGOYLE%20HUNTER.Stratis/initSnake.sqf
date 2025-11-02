@@ -3,18 +3,20 @@ theBox setDir (getDir SolidSnake)-90;
 theBox hideObjectGlobal true;
 
 //SAY METAL GEAR
-SolidSnake addAction [
-	"METAL GEAR",
-	{
+waitUntil { !isNull (findDisplay 46) };
+
+keydown_fnc = {   
+ switch (_this) do {   
+  {  
+	case _x: {    
 		[SolidSnake, ["metalGear", 100, 1]] remoteExec ["say3D", ([0, -2] select isDedicated), true];
-	},
-	[], // No arguments
-	1.5, // Priority
-	false, // Show window
-	true, // Hide on use
-	"", // Shortcut
-	"true" // Condition (always show the action)
-];
+	};     
+  } foreach (actionKeys "User10");   
+ };   
+};   
+   
+(findDisplay 46) displayAddEventHandler ["KeyDown","_this select 1 call keydown_fnc;false;"];  
+
 
 // Add box hiding action to ACE menu
 _condition = {
