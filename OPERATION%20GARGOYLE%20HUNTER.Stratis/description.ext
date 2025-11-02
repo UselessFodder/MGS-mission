@@ -1,3 +1,6 @@
+allowFunctionsRecompile = 1;
+respawnOnStart = -1;
+
 class CfgSounds {
 	sounds[] = {};  	
 	

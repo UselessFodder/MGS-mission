@@ -1,13 +1,21 @@
+params ["_player", "_didJIP"];
 
-player addAction [
-    "METAL GEAR",
-    {
-        [player, ["metalGear", 100, 1]] remoteExec ["say3D", ([0, -2] select isDedicated), true];
-    },
-    [], // No arguments
-    1.5, // Priority
-    true, // Show window
-    false, // Hide on use
-    "", // Shortcut
-    "true" // Condition (always show the action)
-];
+// Add the event handler for the arsenal closing
+[missionNamespace,"arsenalClosed", {
+    // Save the unit's loadout when the arsenal is closed
+    player setVariable ["savedLoadout", getUnitLoadout player];
+}] call BIS_fnc_addScriptedEventHandler;
+
+["ace_arsenal_displayClosed", {
+    // Save the unit's loadout when the arsenal is closed
+    player setVariable ["savedLoadout", getUnitLoadout player];
+}] call CBA_fnc_addEventHandler;
+
+//prevent respawn cheese/weirdness if no arsenal is used yet
+player setVariable ["savedLoadout", getUnitLoadout player];
+
+
+
+if (_player == SolidSnake) then {
+	execVM "initSnake.sqf";
+};
