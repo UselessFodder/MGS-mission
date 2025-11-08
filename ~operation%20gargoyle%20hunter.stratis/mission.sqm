@@ -25,13 +25,13 @@ class EditorData
 	class Camera
 	{
 		pos[]={1898.8052,33.778973,5688.8462};
-		dir[]={0.031693399,-0.44880489,0.89307076};
-		up[]={0.015917275,0.89362812,0.44852385};
-		aside[]={0.99937367,7.1158865e-09,-0.035465892};
+		dir[]={0.24620469,-0.54596239,0.80081731};
+		up[]={0.16044039,0.83780962,0.52185613};
+		aside[]={0.95584631,-1.4901161e-08,-0.29386708};
 	};
 };
 binarizationWanted=0;
-sourceName="operation%20gargoyle%20hunter";
+sourceName="~operation%20gargoyle%20hunter";
 addons[]=
 {
 	"A3_Props_F_Orange_Humanitarian_Supplies",
