@@ -16,15 +16,15 @@ theMech addEventHandler ["HandleDamage",
 			theMech setFuel 0;
 			private _gunner = gunner theMech;
 			_gunner disableAI "ALL";
-			hint "refueling";
+			hint "Damage Overload - Repairing";
 			_smoke1 = "test_EmptyObjectForSmoke" createVehicle position theMech; 
 			_smoke1 attachTo[theMech,[0,1.5,-1]];
 			_smoke2 = "test_EmptyObjectForSmoke" createVehicle position theMech; 
 			_smoke2 attachTo[theMech,[1,-0.5,2]];
-			sleep 10;
+			sleep 90;
 			theMech setFuel 1;
 			_gunner enableAI "ALL";
-			hint "fuel restored";
+			hint "REPAIR COMPLETE";
 			deleteVehicle _smoke1;
 			deleteVehicle _smoke2;
 		};

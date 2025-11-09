@@ -1,3 +1,5 @@
+sleep 5;
+
 //spawn explosions to destroy building
 private _bombSpawnX = getMarkerPos "spawnMech" select 0;
 private _bombSpawnY = getMarkerPos "spawnMech" select 1;
@@ -39,15 +41,15 @@ theMech addEventHandler ["HandleDamage",
 			theMech setFuel 0;
 			private _gunner = gunner theMech;
 			_gunner disableAI "ALL";
-			hint "refueling";
+			["DAMAGE OVERLOAD - REPAIR SHUTDOWN ACTIVE"] remoteExec ["hint", 0];
 			_smoke1 = "test_EmptyObjectForSmoke" createVehicle position theMech; 
 			_smoke1 attachTo[theMech,[0,1.5,-1]];
 			_smoke2 = "test_EmptyObjectForSmoke" createVehicle position theMech; 
 			_smoke2 attachTo[theMech,[1,-0.5,2]];
-			sleep 10;
+			sleep 45;
 			theMech setFuel 1;
 			_gunner enableAI "ALL";
-			hint "fuel restored";
+			["REPAIR COMPLETE"] remoteExec ["hint", 0];
 			deleteVehicle _smoke1;
 			deleteVehicle _smoke2;
 		};
@@ -68,6 +70,65 @@ theMech addEventHandler ["HandleDamage",
 		};
 	}
 ];
+
+theMech addEventHandler ["Killed", {
+	metalGearDied = true;
+	publicVariable "metalGearDied";	
+}];
+
+/* _createAddaction = {
+	theMech addAction 
+	[ 
+		"Set Up Bomb in Exhaust Vent", 
+		{ 
+			params ["_target", "_caller", "_actionId", "_arguments"];
+			_blowUp = {
+				titleText ["Bomb is set, Get away from the METAL GEAR!", "PLAIN"];
+				sleep 10;
+				theMech setDamage 1;
+			};
+			
+			[] spawn _blowUp;
+		},
+		nil, 
+		1.5,  
+		true,  
+		true,   
+		"",   
+		"_this == SolidSnake && fuel theMech < 0.1 ",   
+		10,   
+		false,   
+		"",    
+		""    
+	];
+	
+			"_this == SolidSnake && fuel theMech < 0.1 ",   
+}; */
+
+[theMech,[ 
+		"Set Up Bomb in Exhaust Vent", 
+		{ 
+			params ["_target", "_caller", "_actionId", "_arguments"];
+			_blowUp = {
+				titleText ["Bomb is set, Get away from the METAL GEAR!", "PLAIN"];
+				sleep 10;
+				theMech setDamage 1;
+			};
+			
+			[] spawn _blowUp;
+		},
+		nil, 
+		1.5,  
+		true,  
+		true,   
+		"",   
+
+		"_this == SolidSnake && fuel theMech < 0.1 ",   
+		10,   
+		false,   
+		"",    
+		""    
+	]] remoteExec ["addAction", 0];
 
 //steer it towards the enemy
 _MechGroup addWaypoint [getMarkerPos "moveMark_1", 0];

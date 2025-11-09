@@ -1,6 +1,7 @@
 theBox attachTo [SolidSnake, [0, 0.15, -0.1], "Pelvis"];
 theBox setDir (getDir SolidSnake)-90;
-theBox hideObjectGlobal true;
+//theBox hideObjectGlobal true;
+[theBox, true] remoteExec ["hideObjectGlobal", 2];
 
 //SAY METAL GEAR
 waitUntil { !isNull (findDisplay 46) };
@@ -37,7 +38,7 @@ SolidSnake addEventHandler ["HandleDamage",
 		_dmg = _this select 2;
 		_overalldamage = (damage _unit) + 0.05;
 		
-		//_overalldamage;
-		0.05;
+		_overalldamage;
+		//0.05;
 	}
 ];
